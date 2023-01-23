@@ -13,8 +13,6 @@
 #include <string.h>
 #include <stddef.h>
 
-
-
 # define WINDOW_HEIGHT 900
 # define WINDOW_WIDTH 900
 # define MLX_ERROR 1
@@ -48,8 +46,7 @@ typedef struct s_data
 
 }		t_data;
 
-int		init(void);
-
+int		init(t_data *data);
 int		ft_strlen(const char *str);
 char	*read_and_addtostash(char *stash, int fd);
 char	*extract_and_addtoline(char *stash);
@@ -65,15 +62,13 @@ int 	checkextension(char *s);
 int 	isitarectangle(char **map);
 int 	map_size(char *s);
 int 	check_all(char *s);
-int isclosed(char **map);
-int isclosed_2(char *s);
+int 	isclosed(char **map);
+int 	isclosed_2(char *s);
 void	*ft_put_img(t_data *data, char *path);
-int get_pos_x(char **map, char c);
-int get_pos_y(char **map, char c);
-void mlx_put_content(t_data *data, int x, int y, char **map);
-void mlx_put(t_data *data, void *path, int x, int y);
-
-
+int 	get_pos_x(char **map, char c);
+int 	get_pos_y(char **map, char c);
+void	 mlx_put_content(t_data *data, int x, int y, char **map);
+void 	mlx_put(t_data *data, void *path, int x, int y);
 
 
 #endif

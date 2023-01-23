@@ -36,13 +36,14 @@ int main(int ac, char **av)
 	t_data data;
 
 	data.title = av[1];
-	
+
 	if(ac == 2)
 	{
 		if(checkextension(av[1]) == 0)
 			{
 				if( check_all(av[1]) == 0)
-					init();
+				// rajouter un if avant -> if on arrive a parser la map : init
+					init(&data); 
 				else
 				{
 					printf("Error: la map ne remplit pas les conditions requises\n");

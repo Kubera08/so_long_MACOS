@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:32:09 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/01/23 20:41:18 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/01/23 20:49:34 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ void *init_content (t_data *data)
 	data->x_pos = get_pos_x(data->map, 'P');
 	data->y_pos = get_pos_y(data->map, 'P');
 
+
+
+	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
+		return (MLX_ERROR);
+	data->mlx_win = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");
+	if (data->mlx_win == NULL)
+		return (MLX_ERROR);
+	
 }
 /*
 int	handle_no_event(void *data)
@@ -55,18 +64,14 @@ int	handle_keyrelease(int keysym, void *data)
 	
 }
 */
-int	init(void)
+int	init(t_data *data)
 {
-	t_data 	data;
+	data = init_content(data);
 	
 // initialisation et création de fenêtre
-	data.mlx_ptr = mlx_init();
-	if (data.mlx_ptr == NULL)
-		return (MLX_ERROR);
-	data.mlx_win = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");
-	if (data.mlx_win == NULL)
-		return (MLX_ERROR);
+	
 
+	
 // Register events before the loop starts = hooks functions
 
 
@@ -81,7 +86,7 @@ int	init(void)
 
 // loop
 
-	mlx_loop(data.mlx_ptr);
+	mlx_loop(data->mlx_ptr);
 
 // clear
 	// mlx_destroy_window(data.mlx_ptr, data.mlx_win);
