@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:32:09 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/01/23 20:49:34 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/01/23 22:03:49 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void *init_content (t_data *data)
 {
-	t_data	data;
-
 	data->x_size = ft_strlen((data->map[1]) -1);
 	data->y_size = map_size(data->title);
-
-//	data->wall = ft_put_img(data, "/xpm/");
-//	data ->floor = ft_put_img(data, "/xpm/");
 	
 	data->x_pos = get_pos_x(data->map, 'P');
 	data->y_pos = get_pos_y(data->map, 'P');
-
-
+	data->place = (data->x_size % data->x_pos * GAMESIZE);
+	data->place2 = (data->y_size % data->y_pos * GAMESIZE);
 
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
-		return (MLX_ERROR);
+		return (NULL);
 	data->mlx_win = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");
 	if (data->mlx_win == NULL)
-		return (MLX_ERROR);
+		return (NULL);
+		
+	data->wall = ft_put_img(data, "xpm/wall.xpm");
+	
+	return (data);
+//	data ->floor = ft_put_img(data, "/xpm/");
 	
 }
 /*
@@ -64,10 +64,14 @@ int	handle_keyrelease(int keysym, void *data)
 	
 }
 */
-int	init(t_data *data)
+void	init(t_data *data)
 {
 	data = init_content(data);
+	if(data == NULL)
+		return ;
 	
+	mlx_put_content(data, data->x_pos, data->y_pos, data->map);
+
 // initialisation et création de fenêtre
 	
 
@@ -91,8 +95,6 @@ int	init(t_data *data)
 // clear
 	// mlx_destroy_window(data.mlx_ptr, data.mlx_win);
 	// free (data.mlx_ptr);
-	
-	return (0);
 
 }  
 

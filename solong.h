@@ -15,7 +15,7 @@
 
 # define WINDOW_HEIGHT 900
 # define WINDOW_WIDTH 900
-# define MLX_ERROR 1
+#define GAMESIZE 32
 
 
 # ifndef BUFFER_SIZE
@@ -41,12 +41,16 @@ typedef struct s_data
 	char 	*title;
 	int 	x_size;
 	int 	y_size;
+
 	int 	x_pos;
 	int 	y_pos;
 
+	int		place;
+	int 	place2;
+
 }		t_data;
 
-int		init(t_data *data);
+void		init(t_data *data);
 int		ft_strlen(const char *str);
 char	*read_and_addtostash(char *stash, int fd);
 char	*extract_and_addtoline(char *stash);
@@ -64,11 +68,10 @@ int 	map_size(char *s);
 int 	check_all(char *s);
 int 	isclosed(char **map);
 int 	isclosed_2(char *s);
-void	*ft_put_img(t_data *data, char *path);
 int 	get_pos_x(char **map, char c);
 int 	get_pos_y(char **map, char c);
 void	 mlx_put_content(t_data *data, int x, int y, char **map);
 void 	mlx_put(t_data *data, void *path, int x, int y);
-
+void	*ft_put_img(t_data *data, char *path);
 
 #endif
