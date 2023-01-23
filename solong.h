@@ -24,7 +24,29 @@
 #  define BUFFER_SIZE 1
 # endif
 
+typedef struct s_data
 
+{
+	void	*mlx_ptr;
+	void 	*mlx_win;
+
+	void 	*floor;
+	void 	*wall;
+	void	*exit;
+	void	*collectible;
+
+	int		img_width;
+	int 	img_height;
+	char 	img_path;
+
+	char 	**map;
+	char 	*title;
+	int 	x_size;
+	int 	y_size;
+	int 	x_pos;
+	int 	y_pos;
+
+}		t_data;
 
 int		init(void);
 
@@ -38,25 +60,18 @@ char	*ft_strjoin(char *s1, char *s2);
 
 char 	**create_map(char *s);
 int 	map_size(char *s); 
-int 	check_only_C_E_P_1_0(const char **map);
-int 	checkextension(const char *s);
-int 	isitarectangle(const char **map);
+int 	check_only_C_E_P_1_0(char **map);
+int 	checkextension(char *s);
+int 	isitarectangle(char **map);
 int 	map_size(char *s);
-int 	check_all(const char *s);
-
-
-typedef struct s_data
-
-{
-	void	*mlx_ptr;
-	void 	*mlx_win;
-
-	int		img_width;
-	int 	img_height;
-	char 	img_path;
-
-
-}		t_data;
+int 	check_all(char *s);
+int isclosed(char **map);
+int isclosed_2(char *s);
+void	*ft_put_img(t_data *data, char *path);
+int get_pos_x(char **map, char c);
+int get_pos_y(char **map, char c);
+void mlx_put_content(t_data *data, int x, int y, char **map);
+void mlx_put(t_data *data, void *path, int x, int y);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 18:05:25 by arnaud            #+#    #+#             */
-/*   Updated: 2023/01/21 19:14:14 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/01/23 20:36:15 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int map_size(char *s)
 	i = 0;
 	fd = open(s, O_RDWR);
 	if(fd == -1)
-		return (NULL); 
+		return (0); 
 	str = get_next_line(fd);
 	while (str)
 	{
@@ -40,9 +40,9 @@ char **create_map(char *s)
 	int		i;
 	int		fd;
 	int		size;
-
+	
 	i = 0;
-	fd = open(s, O_RDONLY);
+	fd = open(s, O_RDWR);
 	if (fd == -1)
 		return (NULL);
 	size = map_size(s);
@@ -62,3 +62,13 @@ char **create_map(char *s)
 	return (map);
 }
 
+
+void	*ft_put_img(t_data *data, char *path)
+{
+	int	a;
+	int	b;
+
+	a = 0;
+	b = 0;
+	return (mlx_xpm_file_to_image(data->mlx_ptr, path, &a, &b));
+}

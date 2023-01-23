@@ -6,16 +6,27 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:32:09 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/01/20 13:48:41 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/01/23 20:41:18 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
+void *init_content (t_data *data)
+{
+	t_data	data;
+
+	data->x_size = ft_strlen((data->map[1]) -1);
+	data->y_size = map_size(data->title);
+
+//	data->wall = ft_put_img(data, "/xpm/");
+//	data ->floor = ft_put_img(data, "/xpm/");
+	
+	data->x_pos = get_pos_x(data->map, 'P');
+	data->y_pos = get_pos_y(data->map, 'P');
+
+}
 /*
-
-
-
 int	handle_no_event(void *data)
 {
 	char *i;

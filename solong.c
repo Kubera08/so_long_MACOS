@@ -33,9 +33,13 @@
 
 int main(int ac, char **av)
 {
+	t_data data;
+
+	data.title = av[1];
+	
 	if(ac == 2)
 	{
-		if(checkextension(av[1] == 0))
+		if(checkextension(av[1]) == 0)
 			{
 				if( check_all(av[1]) == 0)
 					init();
