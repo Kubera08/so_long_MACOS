@@ -3,9 +3,9 @@
 #define SOLONG_H
 #include <stdlib.h>
 #include <stdio.h>
-#include "minilibx_macos/mlx.h"
-// #include "/usr/X11/include/X11"
-// #include "/usr/X11/Xutil.h"
+#include "minilibx-linux/mlx.h"
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -27,6 +27,7 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void 	*mlx_win;
+	void 	*img_ptr;
 
 	void 	*floor;
 	void 	*wall;
@@ -50,8 +51,8 @@ typedef struct s_data
 
 }		t_data;
 
-void		init(t_data *data);
-int		ft_strlen(const char *str);
+int		init();
+int		ft_strlen( char *str);
 char	*read_and_addtostash(char *stash, int fd);
 char	*extract_and_addtoline(char *stash);
 char	*get_next_line(int fd);
@@ -72,6 +73,7 @@ int 	get_pos_x(char **map, char c);
 int 	get_pos_y(char **map, char c);
 void	 mlx_put_content(t_data *data, int x, int y, char **map);
 void 	mlx_put(t_data *data, void *path, int x, int y);
+int    check_P_E(char **map);
 void	*ft_put_img(t_data *data, char *path);
 
 #endif

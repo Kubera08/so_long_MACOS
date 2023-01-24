@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapcheck_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 18:11:09 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/01/23 16:11:36 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/01/24 12:50:06 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,31 @@ int check_only_C_E_P_1_0(char **map)
 		i++;		
 	}
 	return(0);
+}
+int    check_P_E(char **map)
+{
+    int i;
+    int j;
+    int    e;
+    int    p;
+    char *str;
+
+    i = 0;
+    p = 0;
+    e = 0;
+    while (map[++i])
+    {
+        str = map[i];
+        j = 0;
+        while (str[j++])
+        {
+            if (str[j] == 'P')
+                p++;
+            if (str[j] == 'E')
+                e++;
+            if (p >= 2 || e >= 2)
+                return (1);
+         }
+    }
+    return(0);
 }

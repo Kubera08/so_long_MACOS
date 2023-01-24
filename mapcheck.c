@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapcheck.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:41:18 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/01/23 19:59:42 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/01/24 12:51:04 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int check_all(char *s)
 	t_data data;
 	data.map = create_map(s);
 	
-	if (isitarectangle(data.map) == 0  && check_only_C_E_P_1_0(data.map) == 0 && isclosed(data.map) == 0)
+	if (isitarectangle(data.map) == 0  && check_only_C_E_P_1_0(data.map) == 0 && isclosed(data.map) == 0 && check_P_E(data.map) == 0)
 		return(0);
 	else
 		return(1);

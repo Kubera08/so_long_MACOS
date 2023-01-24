@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:05:29 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/01/20 14:47:44 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/01/24 13:30:46 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int ft_strlen(const char *str)
+int ft_strlen( char *str)
 {
 	int i;
 

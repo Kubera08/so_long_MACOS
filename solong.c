@@ -36,12 +36,13 @@ int main(int ac, char **av)
 	t_data data;
 
 	data.title = av[1];
-
 	if(ac == 2)
 	{
-		if(checkextension(av[1]) == 0)
-			{
-				if( check_all(av[1]) == 0)
+		if(checkextension(data.title) == 0)
+			{		
+
+				data.map = create_map(data.title);
+				if( check_all(data.title) == 0)
 				// rajouter un if avant -> if on arrive a parser la map : init
 					init(&data); 
 				else
